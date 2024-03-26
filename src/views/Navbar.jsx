@@ -9,6 +9,9 @@ const React = require('react');
            <button type="submit" className="navBtn">
              <a href="/" className="link">На главную</a>
            </button>
+           <button className='new-book-btn' id='new-book'>
+            Добавить книгу
+           </button>
            <button type="submit" className="navBtn">
              <a href="/user/account" className="link">Личный кабинет</a>
            </button>
