@@ -1,22 +1,22 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 
-const userRouter = require("express").Router();
-const renderTemplate = require("../utils/renderTemplate");
-const Register = require("../views/Register");
-const Login = require("../views/Login");
+const userRouter = require('express').Router();
+const renderTemplate = require('../utils/renderTemplate');
+const Register = require('../views/Register');
+const Login = require('../views/Login');
 
-const { checkUser } = require("../middlewares/common");
+const { checkUser } = require('../middlewares/common');
 
-const { User } = require("../../db/models");
+const { User } = require('../../db/models');
 
-userRouter.get("/register", (req, res) => {
+userRouter.get('/register', (req, res) => {
   const { login } = req.session;
   renderTemplate(Register, { login }, res);
 });
 
-userRouter.post("/register", async (req, res) => {
+userRouter.post('/register', async (req, res) => {
   try {
-    const { login, email, password } = req.body;
+    const { login, password, email } = req.body;
     const user = await User.findOne({ where: { email } });
     if (user) {
       res
@@ -27,7 +27,7 @@ userRouter.post("/register", async (req, res) => {
       const newUser = await User.create({ login, email, password: hash });
       req.session.login = newUser.login;
       req.session.save(() => {
-        res.status(200).json({ regDone: "Новый профиль успешно создан" });
+        res.status(200).json({ regDone: 'Новый профиль успешно создан' });
       });
     }
   } catch (error) {
@@ -35,19 +35,19 @@ userRouter.post("/register", async (req, res) => {
   }
 });
 
-userRouter.get("/logout", checkUser, (req, res) => {
+userRouter.get('/logout', checkUser, (req, res) => {
   req.session.destroy(() => {
-    res.clearCookie("cookieName");
-    res.redirect("/");
+    res.clearCookie('cookieName');
+    res.redirect('/');
   });
 });
 
-userRouter.get("/login", (req, res) => {
+userRouter.get('/login', (req, res) => {
   const { login } = req.session;
   renderTemplate(Login, { login }, res);
 });
 
-userRouter.post("/login", async (req, res) => {
+userRouter.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });

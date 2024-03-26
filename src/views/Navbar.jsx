@@ -1,4 +1,4 @@
-const React = require("react");
+const React = require('react');
 
 function Navbar({ login }) {
   return (
@@ -12,7 +12,9 @@ function Navbar({ login }) {
             </a>
           </button>
           <button type="button" className="new-book-btn" id="new-book">
-            Добавить книгу
+            <a href="/addbook" className="link">
+              Добавить книгу
+            </a>
           </button>
           <button type="submit" className="navBtn">
             <a href="/user/account" className="link">
