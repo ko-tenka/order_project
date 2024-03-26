@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "отвечаю, будет круто!",
   "main": "index.js",
-"scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "mig": "npx sequelize db:migrate",
-  "remigrate": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all",
-  "seed": "npx sequelize db:seed:all",
-  "createDB": "npx sequelize db:create",
-  "dropDB": "npx sequelize db:drop",
-  "start": "node server.js",
-  "dev": "nodemon app.js --ignore sessions --ext js,jsx"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mig": "npx sequelize db:migrate",
+    "remigrate": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "seed": "npx sequelize db:seed:all",
+    "createDB": "npx sequelize db:create",
+    "dropDB": "npx sequelize db:drop",
+    "start": "node server.js",
+    "dev": "nodemon app.js --ignore sessions --ext js,jsx"
   },
   "keywords": [],
   "author": "",
