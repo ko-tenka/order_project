@@ -3,10 +3,16 @@ const renderTemplate = require('../utils/renderTemplate');
 const Home = require('../views/Home');
 const Page404 = require('../views/Page404');
 const AddBook = require('../views/AddBook');
+const { Book } = require('../../db/models');
 
-indexRouter.get('/', (req, res) => {
-  const { login } = req.session;
-  renderTemplate(Home, { login }, res);
+indexRouter.get('/', async (req, res) => {
+  try {
+    const { login } = req.session;
+    const book = await Book.findAll({ raw: true });
+    renderTemplate(Home, { login, book }, res);
+  } catch (error) {
+    console.log('ERROR', error);
+  }
 });
 
 indexRouter.get('/404', (req, res) => {

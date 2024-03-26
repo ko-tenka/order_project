@@ -47,23 +47,25 @@ const Layout = require('./Layout');
 function AddBook() {
   return (
     <Layout>
-      <div className='mainContainer'>
+      <div className="mainContainer">
         <h1>TASKS FROM DATABASE</h1>
 
-        <form className='addTaskForm'>
-          <input type='text' name='title' placeholder='Title' required />
+        <form className="addTaskForm">
+          <input type="text" name="title" placeholder="Title" required />
           <input
-            type='text'
-            name='description'
-            placeholder='Description'
+            type="text"
+            name="description"
+            placeholder="Description"
             required
           />
-          <button type='submit'>Add Task</button>
+          <input type="text" name="author" placeholder="Author" required />
+          <input type="text" name="img" placeholder="Ссылка на обложку" required />
+          <button type="submit">Add Task</button>
         </form>
 
-        <div className='tasksContainer'></div>
+        <div className="tasksContainer" />
       </div>
-      <script defer src='/js/tasks.js' />
+      <script defer src="/js/tasks.js" />
     </Layout>
   );
 }
