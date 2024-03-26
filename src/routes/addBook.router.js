@@ -2,45 +2,59 @@ const express = require('express');
 
 const router = express.Router();
 const { User, Book } = require('../../db/models');
-const renderTemplate = require('../utils/renderTemplate');
-const AddBook = require('../views/AddBook');
+// const renderTemplate = require('../utils/renderTemplate');
+// const AddBook = require('../views/AddBook');
 
-// GET запрос для отображения страницы добавления книги
-router.get('/', async (req, res) => {
+module.exports = router.get('/', async (req, res) => {
   try {
-    const { title } = res.app.locals;
-    renderTemplate(AddBook, { title }, res);
-  } catch (error) {
-    res.status(500).send(`Ошибка при отображении страницы добавления книги: ${error}`);
+    const tasks = await Book.findAll({ raw: true });
+    res.json(tasks);
+  } catch (err) {
+    console.log('Error on taskRouter.get() ====>>>>', err);
   }
 });
 
-// POST запрос для добавления книги
 router.post('/', async (req, res) => {
-  console.log('Попали в ручку добавления книги', req.body);
   try {
     const {
       title, description, author, img, user_id,
     } = req.body;
-    const newBook = await Book.create({
+    const newTask = await Book.create({
       title, description, author, img, user_id,
     });
-    res.status(201).json(newBook);
-  } catch (error) {
-    res.status(500).json({ error: `Ошибка создания книги: ${error.message}` });
+    res.json(newTask);
+  } catch (err) {
+    console.log('Error on taskRouter.post() ====>>>>', err);
+    res.status(500).send('Error creating task');
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const task = await Book.findByPk(id);
+    if (!task) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+    res.json(task);
+  } catch (err) {
+    console.log(`Error on taskRouter.get(${id}) ====>>>>`, err);
+    res.status(500).send('Error fetching task');
   }
 });
 
 router.patch('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description } = req.body;
+    const { title, description, author, img, } = req.body;
     const task = await Book.findByPk(id);
     if (!task) {
       return res.status(404).json({ error: 'Task not found' });
     }
     task.title = title || task.title;
     task.description = description || task.description;
+    task.author = author || task.author;
+    task.img = img || task.img;
     await task.save();
     res.json(task);
   } catch (err) {
