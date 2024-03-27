@@ -21,13 +21,22 @@ form.addEventListener('submit', async (event) => {
       const taskElement = document.createElement('div');
       taskElement.className = 'taskCard';
       taskElement.innerHTML = `
-     <img src="${newTask.img}" alt="Тут обложка" />
-		 <h3>${newTask.title}</h3>
-		 <p>${newTask.description}</p>
-     <h3>${newTask.author}</h3>
-		 <div class="editForm" style="display:none;">
-		 </div>
+      <div className="cardBook">
+      <div className="book">
+        <div className="imgCard">
+          <img src=${newTask.img} alt="img_card" />
+        </div>
+        <div className="titleCard">
+          <div><h3>${newTask.title}</h3></div>
+          <div><h3>${newTask.description}</h3></div>
+          <div><h3>${newTask.author}</h3></div>
+        </div>
+      </div>
+      <div class="editForm" style="display:none;">
+</div>
+    </div>
 	   `;
+
     tasksContainer.appendChild(taskElement);
     }
 
@@ -39,3 +48,4 @@ form.addEventListener('submit', async (event) => {
     console.error('Error:', error);
   }
 });
+
