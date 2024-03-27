@@ -37,9 +37,11 @@ async function main(email) {
   console.log("Message sent: %s", info.messageId);
 }
 
+
+
 userRouter.post("/register", async (req, res) => {
   try {
-    const { login, password, email } = req.body;
+    const { login, email, password } = req.body;
     const user = await User.findOne({ where: { email } });
     if (user) {
       res
@@ -50,16 +52,32 @@ userRouter.post("/register", async (req, res) => {
       const newUser = await User.create({ login, email, password: hash });
       await main(email);
       console.log("Email sent successfully to:", email);
+      const userId = await User.findOne({
+        attributes: ['id'],
+        where: { email: email }
+      });
       req.session.login = newUser.login;
+      req.session.userId = userId;
       req.session.save(() => {
-        res.status(200).json({ regDone: 'Новый профиль успешно создан' });
+        res.status(200).json({ regDone: "Новый профиль успешно создан" });
       });
     }
   } catch (error) {
     console.log(error);
-    res.send('Ошибочка!')
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 userRouter.get('/logout', checkUser, (req, res) => {
   req.session.destroy(() => {
@@ -84,7 +102,13 @@ userRouter.post('/login', async (req, res) => {
     } else {
       const checkPass = await bcrypt.compare(password, user.password);
       if (checkPass) {
+        const userId = await User.findOne({
+          attributes: ['id'],
+          where: { email: email }
+        });
         req.session.login = user.login;
+        req.session.userId = userId;
+        
         req.session.save(() => {
           res
             .status(200)
