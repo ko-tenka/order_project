@@ -21,15 +21,6 @@ module.exports = function Home({ login, book }) {
         {book.map((el) => (
           <div className="bookContainer">
             <div className={`component${el.id}`}>
-              {/* <h3>
-              {el.title}
-              {el.description}
-              {el.author}
-              {el.user_id}
-              
-              Избранное
-
-            </h3> */}
 
               <div className="cardBook">
                 <div className="book">
@@ -49,6 +40,7 @@ module.exports = function Home({ login, book }) {
               <li key={el.id}><a href={`/probook/`+el.id}>Подробнее</a></li>
 
             <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" className="fav-img" /></a>
+            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/imageBlack.png" className="fav-imgBlack" /></a>
 
           </div>
         ))}

@@ -236,9 +236,10 @@ body {
 .taskBook {
     display: flex;
     flex-direction: column;
+}
 
 .fav-img {
-    max-height: 10px;
+    max-height: 25px;
     width: auto; 
     height: auto;
   }
@@ -247,7 +248,7 @@ body {
     max-height: 100px;
     width: auto; 
     height: auto;
-
+}
 
 .colorStaer{
     background-color: black;
@@ -255,4 +256,11 @@ body {
 .star1:hover{
     cursor: pointer;
 
+}
+.fav-imgBlack{
+    max-height: 25px;
+    
+}
+.fav-imgBlack:hover{
+    display: block;
 }
