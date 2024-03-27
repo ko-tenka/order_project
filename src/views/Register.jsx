@@ -11,19 +11,19 @@ const React = require('react');
 
          <form id="regForm"> 
 
-           <label htmlFor="loginInput" className="form-label">Введите логин:</label>
-           <input name="login" type="text" className="form-control" id="loginInput" placeholder="Введите логин" />
+           {/* <label htmlFor="loginInput" className="form-label">Введите логин:</label> */}
+           <div><input name="login" type="text" className="form-control" id="loginInput" placeholder="Введите логин" /></div>
 
            {/* <label htmlFor="phoneInput" className="form-label">Введите ваш номер телефона:</label>
            <input name="phone" type="tel" id="phone" placeholder="Введите номер телефона"></input> */}
 
-           <label htmlFor="emailInput" className="form-label">Введите ваш адрес электронной почты:</label>
-           <input name="email" type="email" className="form-control" id="emailInput" placeholder="Введите e-mail" />
+           {/* <label htmlFor="emailInput" className="form-label">Введите ваш адрес электронной почты:</label> */}
+           <div><input name="email" type="email" className="form-control" id="emailInput" placeholder="Введите e-mail" /></div>
 
-           <label htmlFor="passwordInput" className="form-label">Введите пароль:</label>
-           <input name="password" type="password" className="form-control" id="passwordInput" placeholder="Введите пароль" />
+           {/* <label htmlFor="passwordInput" className="form-label">Введите пароль:</label> */}
+           <div><input name="password" type="password" className="form-control" id="passwordInput" placeholder="Введите пароль" /></div>
 
-           <button type="submit" className="regBtn">Зарегестрировать аккаунт</button>
+           <button type="submit" className="regBtn">Зарегестрироваться</button>
 
          </form>
 

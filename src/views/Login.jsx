@@ -9,16 +9,16 @@ module.exports = function Login({ login }) {
         <h2 className="hTag">Пожалуйста, введите свои данные для входа в аккаунт:</h2>
 
         <form id="loginForm">
-          <label htmlFor="emailInput" className="form-label">Адрес электронной почты:</label>
-          <input name="email" type="text" className="form-control" autoComplete="off" id="emailInput" placeholder="Почта*"/>
+          {/* <label htmlFor="emailInput" className="form-label">Адрес электронной почты:</label> */}
+         <div><input name="email" type="text" className="form-control" autoComplete="off" id="emailInput" placeholder="Почта*"/></div> 
 
           {/* <label htmlFor="numberInput" className="form-label">Номер телефона:</label>
             <input name="number" type="text" className="form-control" autoComplete="off" id="numberInput" placeholder="+7(999) 123-23-23*"/> */}
 
           {/* <input name="email" type="text" className="form-control" id="emailInput" placeholder="Введите адрес электронной почты" /> */}
-          <label htmlFor="passwordInput" className="form-label">Пароль:</label>
-          <input name="password" type="password" className="form-control" id="passwordInput" placeholder="введите пароль" />
-          <button type="submit" className="logBtn">Авторизоваться</button>
+          {/* <label htmlFor="passwordInput" className="form-label">Пароль:</label> */}
+         <div><input name="password" type="password" className="form-control" id="passwordInput" placeholder="введите пароль" /></div> 
+          <button type="submit" className="logBtn">Войти</button>
         </form>
 
         <h3 className="logMsg">...</h3>
