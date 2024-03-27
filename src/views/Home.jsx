@@ -22,10 +22,10 @@ module.exports = function Home({ login, book }) {
               {el.title}
               {el.description}
               {el.author}
-              {el.img}
               {el.user_id}
               Избранное
             </h3>
+            <img src={el.img} className="img-for-book" alt="book_img" />
           </div>
         ))}
       </div>
