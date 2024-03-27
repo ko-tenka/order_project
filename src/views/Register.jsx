@@ -5,9 +5,9 @@ const React = require('react');
  module.exports = function Register({ login }) {
    return (
      <Layout >
-       <div className='container'>
+       <div className='regContainer'>
        <div className="login">
-         <h2>Добро пожаловать на страницу регистрации!</h2>
+         <h2 className="hTag">Добро пожаловать на страницу регистрации!</h2>
 
          <form id="regForm"> 
 
@@ -27,7 +27,9 @@ const React = require('react');
 
          </form>
 
-         <h3 className="regMsg">...</h3>
+         <h3 className="regMsg"> </h3>
+         <a href="/home" className="homeLink">ВЕРНУТЬСЯ</a>
+
        </div>
        </div>
        <script defer src="/js/registration.js" />

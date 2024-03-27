@@ -3,22 +3,25 @@ const React = require('react');
 function Navbar({ login }) {
   return (
     <div className="navbar">
-      <h1 className="logo">Книжный червь</h1>
+      {/* <h1 className="logo">Книжный червь</h1> */}
+      <a href="/" className="logo">
+        Книжный червь
+      </a>
       {login ? (
         <nav className="nav">
-          <button type="submit" className="navBtn">
+          {/* <button type="submit" className="navBtn">
             <a href="/" className="link">
               На главную
             </a>
-          </button>
+          </button> */}
           <button type="button" className="new-book-btn" id="new-book">
             <a href="/addbook" className="link">
               Добавить книгу
             </a>
           </button>
           <button type="submit" className="navBtn">
-            <a href="/user/account" className="link">
-              Личный кабинет
+            <a href="/user/favorites" className="link">
+              Избранное
             </a>
           </button>
           <button type="submit" className="navBtn">
@@ -29,11 +32,11 @@ function Navbar({ login }) {
         </nav>
       ) : (
         <nav>
-          <button type="submit" className="navBtn">
+          {/* <button type="submit" className="navBtn">
             <a href="/" className="link">
               На главную
             </a>
-          </button>
+          </button> */}
           <button type="submit" className="navBtn">
             <a href="/user/register/" className="link">
               Регистрация
