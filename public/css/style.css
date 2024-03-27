@@ -1,34 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+  background-color:#F1CAAE;
+}
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #8C5B5B;
+    padding-left: 6%;
+    padding-right: 6%;
+    height: 109px;
+  }
+  .logo {
+    width: 270px;
+    height: 37px;
+    font-family: 'IBM Plex Mono';
+    font-weight: normal;
+    color: #F1CAAE;
+    text-decoration: none;
+    font-size: 32px;
+  }
+
+.navBtn, .new-book-btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+.link {
+    margin-left: 30px;
+    font-size: 18px;
+    color: #F1CAAE;
+    font-family: 'IBM Plex Mono';
+    font-weight: 350;
+    text-decoration: none;
+}
+
+.hTag{
+    padding-bottom: 70px;
+}
 .login{
-    height: 1000px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #e9479389;
+    justify-content: center;
+    background-color:#F1CAAE;
 }
 .loginForm{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 20px;
 }
 .form-control{
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
-    margin: 5px;
+    margin: 10px;
+    padding-left: 0;
     background-color: #e9479300;
 }
-.regBtn,
-.logBtn{
+#regForm input {
+    padding-left: 10px;
+}
+#loginForm input {
+    padding-left: 10px;
+}
+.regBtn, .logBtn, .addBookBtn{
     align-items: center;
     background-color: black;
     color: white;
+    width: 200px;
+    height: 40px;
+    padding: 0px, 12px, 5px, 12px;
     border-radius: 8px;
     padding: 5px;
     border: none;
     margin-left: 13px;
+    font-size: 16px;
 }
+
+
 .logBtn{
     margin-left: 37px;
+    margin-top: 30px;
     padding-left: 20px;
     padding-right: 20px;
+}
+.regBtn {
+    margin-left: 33px;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.form-control {
+    width: 245px;
+    height: 35px;
+    border: 2px solid black;
+    border-radius: 14px; 
+    font-size: 17px;
+    outline: none;
+}
+
+.homeLink {
+    margin-left: 80%;
+    width: 103px;
+    height: 37px;
+    font-size: 18px;
+    font-family: "IBM Plex Mono";
+    font-weight: 400;
+    color: black;
+    text-decoration: none;
+}
+
+.homeLink:hover, .regBtn:hover, .logBtn:hover, .logo:hover, .link:hover, .addBookBtn {
+    transform: scale(1.1);
+}
+
+.mainContainer h1 {
+    padding-left: 6%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.addTaskForm {
+    padding-left: 6%;
+}
+
+.addBook {
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 14px;
+    width: 400px;
+    height: 35px;
+    padding-left: 10px;
+    outline: none;
+    font-size: 16px;
+    background-color: #F1CAAE;
+}
+
+.addBookText {
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 14px;
+    width: 400px;
+    height: 100px;
+    padding-left: 10px;
+    padding-top: 10px;
+    outline: none;
+    font-size: 16px;
+    background-color: #F1CAAE;
+}
+
+.tasksContainer {
+    padding-right: 6%;
+    padding-left: 6%;
+    margin-top: 50px;
+    display: flex;
+}
+.taskCard {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    width: 350px;
+    height: 165px;
+}
+.taskCard img {
+    width: 100px;
+    height: 150px;
+}
+
+.upCont {
+    margin-left: 6%;
+    margin-top: 30px;
+    font-size: 18px;
+    font-family: "IBM Plex Mono";
+    font-weight:lighter;
+    color: black;
+}
+.upCont h1{
+    font-size: 34px;
+    font-family: "IBM Plex Mono";
+    font-weight: 400;
+    color: black;
+}
+.bookContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    justify-content: space-between;
+}
+
+.book {
+    align-items: center;
+    justify-content: start;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    width: 350px;
+    height: 165px;
+}
+.book div {
+    margin: 5px;
+}
+
+.imgCard img{
+    width: 100px;
+    height: 150px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 70px;
+}
+
+.logMsg, .regMsg {
+    padding-top: 50px;
+}
+
+.taskBook {
+    display: flex;
+    flex-direction: column;
 }
