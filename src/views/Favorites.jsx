@@ -5,6 +5,7 @@ module.exports = function Favorites({ login }) {
   return (
     <Layout login={login}>
       <div className="fav-container"></div>
+      <script src="/js/favorite.js" />
     </Layout>
   );
 };

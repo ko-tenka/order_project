@@ -2,7 +2,7 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function Home({ login, book }) {
-  // console.log(book);
+  console.log(book);
   return (
     <Layout login={login}>
       <div className="container">
@@ -25,7 +25,7 @@ module.exports = function Home({ login, book }) {
               {el.user_id}
             </h3>
             <img src={el.img} className="img-for-book" alt="book_img" />
-            <button type='submit'><a href='#'><img src="/css/image.png" className='fav-img' /></a></button>
+            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" className="fav-img" /></a>
           </div>
         ))}
       </div>

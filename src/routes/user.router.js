@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
 
-const userRouter = require("express").Router();
-const renderTemplate = require("../utils/renderTemplate");
-const Register = require("../views/Register");
-const Login = require("../views/Login");
-const nodemailer = require("nodemailer");
+const userRouter = require('express').Router();
+const nodemailer = require('nodemailer');
+const renderTemplate = require('../utils/renderTemplate');
+const Register = require('../views/Register');
+const Login = require('../views/Login');
 
 const { checkUser } = require('../middlewares/common');
 
@@ -15,29 +15,29 @@ userRouter.get('/register', (req, res) => {
   renderTemplate(Register, { login }, res);
 });
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.mail.ru",
-  port: 465,
-  secure: true, // Use true for port 465, false for all other ports
-  auth: {
-    user: "emailtest00@mail.ru",
-    pass: "reswEbGKHAeaript8jxe",
-  },
-});
-async function main(email) {
-  // send mail with defined transport object
-  const info = await transporter.sendMail({
-    from: "emailtest00@mail.ru", // sender address
-    to: email, // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Вы зарегестрировались на червечке!", // plain text body
-    html: "<b>Вы зарегестрировались на червечке!</b>",
-  });
+// const transporter = nodemailer.createTransport({
+//   host: 'smtp.mail.ru',
+//   port: 465,
+//   secure: true, // Use true for port 465, false for all other ports
+//   auth: {
+//     user: 'emailtest00@mail.ru',
+//     pass: 'reswEbGKHAeaript8jxe',
+//   },
+// });
+// async function main(email) {
+//   // send mail with defined transport object
+//   const info = await transporter.sendMail({
+//     from: 'emailtest00@mail.ru', // sender address
+//     to: email, // list of receivers
+//     subject: 'Hello ✔', // Subject line
+//     text: 'Вы зарегестрировались на червечке!', // plain text body
+//     html: '<b>Вы зарегестрировались на червечке!</b>',
+//   });
 
-  console.log("Message sent: %s", info.messageId);
-}
+//   console.log('Message sent: %s', info.messageId);
+// }
 
-userRouter.post("/register", async (req, res) => {
+userRouter.post('/register', async (req, res) => {
   try {
     const { login, password, email } = req.body;
     const user = await User.findOne({ where: { email } });
@@ -48,16 +48,21 @@ userRouter.post("/register", async (req, res) => {
     } else {
       const hash = await bcrypt.hash(password, 10);
       const newUser = await User.create({ login, email, password: hash });
-      await main(email);
-      console.log("Email sent successfully to:", email);
+      // await main(email);
+      // console.log('Email sent successfully to:', email);
+      const userId = await User.findOne({
+        attributes: ['id'],
+        where: { email },
+      });
       req.session.login = newUser.login;
+      req.session.userId = userId;
       req.session.save(() => {
         res.status(200).json({ regDone: 'Новый профиль успешно создан' });
       });
     }
   } catch (error) {
     console.log(error);
-    res.send('Ошибочка!')
+    res.send('Ошибочка!');
   }
 });
 
@@ -84,7 +89,12 @@ userRouter.post('/login', async (req, res) => {
     } else {
       const checkPass = await bcrypt.compare(password, user.password);
       if (checkPass) {
+        const userId = await User.findOne({
+          attributes: ['id'],
+          where: { email },
+        });
         req.session.login = user.login;
+        req.session.userId = userId;
         req.session.save(() => {
           res
             .status(200)
