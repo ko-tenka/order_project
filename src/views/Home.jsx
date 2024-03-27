@@ -2,7 +2,7 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function Home({ login, book }) {
-  console.log(book);
+  // console.log(book);
   return (
     <Layout login={login}>
       <div className="container">
@@ -23,13 +23,12 @@ module.exports = function Home({ login, book }) {
               {el.description}
               {el.author}
               {el.user_id}
-              Избранное
             </h3>
             <img src={el.img} className="img-for-book" alt="book_img" />
+            <button type='submit'><a href='#'><img src="/css/image.png" className='fav-img' /></a></button>
           </div>
         ))}
       </div>
     </Layout>
   );
 };
-
