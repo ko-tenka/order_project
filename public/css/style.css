@@ -32,3 +32,11 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+
+
+.colorStaer{
+    background-color: black;
+}
+.star1:hover{
+    cursor: pointer;
+}

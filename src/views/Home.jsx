@@ -25,6 +25,7 @@ module.exports = function Home({ login, book }) {
               {el.img}
               {el.user_id}
               Избранное
+              <li key={el.id}><a href={`/probook/`+el.id}>Подробнее</a></li>
             </h3>
           </div>
         ))}
