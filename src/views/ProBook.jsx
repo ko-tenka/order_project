@@ -10,6 +10,17 @@ function ProBook({ login, book }) {
         <h1>Описание {book.description}</h1>
         <h1>Выложил: {book.author}</h1>
       </div>
+
+      <div className='rating' id ={book.id}>
+
+       <h1 className='star1' id = '1'>⭐</h1>
+       <h1 className='star2' id = '2'>⭐</h1>
+       <h1 className='star3' id = '3'>⭐</h1>
+       <h1 className='star4' id = '4'>⭐</h1>
+       <h1 className='star5' id = '5'>⭐</h1>
+        
+      </div>
+      <script defer src="/js/rate.js" />
     </Layout>
   );
 }
