@@ -48,4 +48,12 @@
     max-height: 100px;
     width: auto; 
     height: auto;
+
+
+.colorStaer{
+    background-color: black;
+}
+.star1:hover{
+    cursor: pointer;
+
 }

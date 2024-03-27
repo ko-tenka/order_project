@@ -23,6 +23,10 @@ module.exports = function Home({ login, book }) {
               {el.description}
               {el.author}
               {el.user_id}
+              
+              Избранное
+              <li key={el.id}><a href={`/probook/`+el.id}>Подробнее</a></li>
+
             </h3>
             <img src={el.img} className="img-for-book" alt="book_img" />
             <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" className="fav-img" /></a>
