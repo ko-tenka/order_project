@@ -4,11 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
   favoriteButtons.forEach((button) => {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
-      console.log(button);
-      const bookId = button.dataset.id; // Получаем ID книги из атрибута data-bookid кнопки
+      const bookId = event.target.dataset.id; // Получаем ID книги из атрибута data-bookid кнопки
 
       try {
-        const response = await fetch('/favorites/add', {
+        const response = await fetch(`/favorites/add/${bookId}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -18,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log('Книга успешно добавлена в избранное:', data.favorite);
+          console.log(data);
+          console.log('Книга успешно добавлена в избранное пользователя');
           // Добавьте здесь код для обновления интерфейса или других действий после успешного добавления книги в избранное
         } else {
           console.error('Ошибка при добавлении книги в избранное:', response.status);

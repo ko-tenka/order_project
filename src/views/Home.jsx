@@ -29,10 +29,11 @@ module.exports = function Home({ login, book }) {
 
             </h3>
             <img src={el.img} className="img-for-book" alt="book_img" />
-            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" className="fav-img" /></a>
+            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" data-id={el.id} className="fav-img" /></a>
           </div>
         ))}
       </div>
+      <script src="/js/favorite.js" />
     </Layout>
   );
 };

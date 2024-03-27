@@ -4,14 +4,12 @@ const Home = require('../views/Home');
 const Page404 = require('../views/Page404');
 const AddBook = require('../views/AddBook');
 const { Book } = require('../../db/models');
-const ProBook = require('../views/ProBook')
+const ProBook = require('../views/ProBook');
 
-
-
-indexRouter.get(`/probook/:id`, async (req, res) => {
+indexRouter.get('/probook/:id', async (req, res) => {
   try {
     const { login } = req.session;
-    const book = await Book.findOne({ where: { id: req.params.id } })
+    const book = await Book.findOne({ where: { id: req.params.id } });
     renderTemplate(ProBook, { login, book }, res);
   } catch (error) {
     console.log('ERROR', error);
