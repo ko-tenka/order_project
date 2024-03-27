@@ -44,23 +44,23 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function AddBook() {
+function AddBook({login}) {
   return (
-    <Layout>
+    <Layout login = {login}>
       <div className="mainContainer">
-        <h1>TASKS FROM DATABASE</h1>
+        <h1>Добавь книжку</h1>
 
         <form className="addTaskForm">
-          <input type="text" name="title" placeholder="Title" required />
-          <input
+        <div> <input type="text" name="title" placeholder="Название" required /></div>
+          <div><input
             type="text"
             name="description"
-            placeholder="Description"
+            placeholder="Описание"
             required
-          />
-          <input type="text" name="author" placeholder="Author" required />
-          <input type="text" name="img" placeholder="Ссылка на обложку" required />
-          <button type="submit">Add Task</button>
+          /></div>
+          <div><input type="text" name="author" placeholder="Автор" required /></div>
+          <div><input type="text" name="img" placeholder="Ссылка на обложку" required /></div>
+          <button type="submit">Добавить</button>
         </form>
 
         <div className="tasksContainer" />

@@ -3,7 +3,7 @@ const React = require('react');
 function Navbar({ login }) {
   return (
     <div className="navbar">
-      <h1 className="logo">Название проекта</h1>
+      <h1 className="logo">Книжный червь</h1>
       {login ? (
         <nav className="nav">
           <button type="submit" className="navBtn">
