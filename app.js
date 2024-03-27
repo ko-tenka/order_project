@@ -48,3 +48,25 @@ app.get('/*', (req, res) => {
 app.listen(PORT, function () {
   console.log(`Server listening at localhost:${this.address().port}`);
 });
+
+
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))
+const mailer = require('./public/js/nodemailer')
+app.post('/user/register', (req, res) => { 
+const message = {        
+  to: req.body.email,
+  subject: 'Congratulations! You are successfully registred on our site',
+  text: `Поздравляем, Вы успешно зарегистрировались на нашем сайте!
+  
+  данные вашей учетной записи:
+  login: ${req.body.email}
+  password: ${req.body.pass}
+  
+  Данное письмо не требует ответа.`
+}
+mailer(message) 
+user = req.body 
+res.redirect('/registration') 
+})
+
