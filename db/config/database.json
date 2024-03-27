@@ -1,10 +1,6 @@
 {
   "development": {
-    "username": "antonina_leopardovna",
-    "password": "123",
-    "database": "worm",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+	  "use_env_variable": "DB"
   },
   "test": {
     "username": "root",
