@@ -1,4 +1,5 @@
 const rating = document.querySelector('.rating');
+// const allRateHome = document.querySelector('.allRateHome')
 
 rating.addEventListener('click', async (e)=> {
     try{

@@ -7,9 +7,10 @@ router.post('/', async (req, res) => {
     try {
         console.log(req.body)
       const { rate } = req.body;
+      const { book_id } = req.body;
       const user_id = req.session.userId.id;
       const newTask = await Rate.create({
-        rate, user_id, book_id
+        stars: rate, user_id, book_id
       });
       res.json(newTask);
     } catch (err) {
