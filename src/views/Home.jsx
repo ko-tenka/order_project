@@ -39,12 +39,13 @@ module.exports = function Home({ login, book }) {
 
               <li key={el.id}><a href={`/probook/`+el.id}>Подробнее</a></li>
 
-            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" className="fav-img" /></a>
+            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" data-id={el.id} className="fav-img" /></a>
             <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/imageBlack.png" className="fav-imgBlack" /></a>
 
           </div>
         ))}
       </div>
+      <script src="/js/favorite.js" />
     </Layout>
   );
 };

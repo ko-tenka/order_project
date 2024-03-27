@@ -45,8 +45,8 @@ router.get('/:id', async (req, res) => {
 });
 
 router.patch('/:id', async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const {
       title, description, author, img,
     } = req.body;
