@@ -25,9 +25,10 @@ module.exports = function Home({ login, book }) {
               {el.title}
               {el.description}
               {el.author}
-              {el.img}
               {el.user_id}
+              
               Избранное
+
             </h3> */}
 
               <div className="cardBook">
@@ -44,6 +45,11 @@ module.exports = function Home({ login, book }) {
               </div>
 
             </div>
+
+              <li key={el.id}><a href={`/probook/`+el.id}>Подробнее</a></li>
+
+            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" className="fav-img" /></a>
+
           </div>
         ))}
       </div>

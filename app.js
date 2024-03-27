@@ -6,9 +6,11 @@ const path = require('path');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
+const bodyParser = require('body-parser');
 const userRouter = require('./src/routes/user.router');
 const indexRouter = require('./src/routes/index.router');
 const apiRouter = require('./src/routes/apiRouter');
+const favoriteRouter = require('./src/routes/favorite.router');
 
 // const dbConnectionCheck = require("./db/dbConnectCheck");
 // const { checkUser  } = require("./src/middlewares/common");
@@ -40,6 +42,7 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 app.use('/user', userRouter);
 app.use('/api', apiRouter);
 app.use('/', indexRouter);
+app.use('/favorites', favoriteRouter);
 
 app.get('/*', (req, res) => {
   res.redirect('/');
@@ -49,24 +52,22 @@ app.listen(PORT, function () {
   console.log(`Server listening at localhost:${this.address().port}`);
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
+const mailer = require('./public/js/nodemailer');
 
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
-const mailer = require('./public/js/nodemailer')
-app.post('/user/register', (req, res) => { 
-const message = {        
-  to: req.body.email,
-  subject: 'Congratulations! You are successfully registred on our site',
-  text: `Поздравляем, Вы успешно зарегистрировались на нашем сайте!
+app.post('/user/register', (req, res) => {
+  const message = {
+    to: req.body.email,
+    subject: 'Congratulations! You are successfully registred on our site',
+    text: `Поздравляем, Вы успешно зарегистрировались на нашем сайте!
   
   данные вашей учетной записи:
   login: ${req.body.email}
   password: ${req.body.pass}
   
-  Данное письмо не требует ответа.`
-}
-mailer(message) 
-user = req.body 
-res.redirect('/registration') 
-})
-
+  Данное письмо не требует ответа.`,
+  };
+  mailer(message);
+  user = req.body;
+  res.redirect('/registration');
+});

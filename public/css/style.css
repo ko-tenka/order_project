@@ -54,12 +54,14 @@ body {
     justify-content: center;
     background-color:#F1CAAE;
 }
+
 .loginForm{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 20px;
 }
+
 .form-control{
     border: 2px solid black;
     border-radius: 10px;
@@ -68,6 +70,7 @@ body {
     padding-left: 0;
     background-color: #e9479300;
 }
+
 #regForm input {
     padding-left: 10px;
 }
@@ -87,7 +90,6 @@ body {
     margin-left: 13px;
     font-size: 16px;
 }
-
 
 .logBtn{
     margin-left: 37px;
@@ -234,4 +236,23 @@ body {
 .taskBook {
     display: flex;
     flex-direction: column;
+
+.fav-img {
+    max-height: 10px;
+    width: auto; 
+    height: auto;
+  }
+
+.img-for-book {
+    max-height: 100px;
+    width: auto; 
+    height: auto;
+
+
+.colorStaer{
+    background-color: black;
+}
+.star1:hover{
+    cursor: pointer;
+
 }
