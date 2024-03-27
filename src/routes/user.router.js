@@ -4,6 +4,7 @@ const userRouter = require("express").Router();
 const renderTemplate = require("../utils/renderTemplate");
 const Register = require("../views/Register");
 const Login = require("../views/Login");
+const nodemailer = require("nodemailer");
 
 const { checkUser } = require("../middlewares/common");
 
@@ -13,6 +14,29 @@ userRouter.get("/register", (req, res) => {
   const { login } = req.session;
   renderTemplate(Register, { login }, res);
 });
+
+
+const transporter = nodemailer.createTransport({
+  host: "smtp.mail.ru",
+  port: 465,
+  secure: true, // Use true for port 465, false for all other ports
+  auth: {
+    user: "kotelnikova_01@mail.ru",
+    pass: "rXRkWccD0RJKjxmdG5vf",
+  },
+});
+async function main(email) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: "kotelnikova_01@mail.ru", // sender address
+    to: email, // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Вы зарегестрировались на червечке!", // plain text body
+    html: "<b>Вы зарегестрировались на червечке!</b>",
+  });
+
+  console.log("Message sent: %s", info.messageId);
+}
 
 userRouter.post("/register", async (req, res) => {
   try {
@@ -25,6 +49,8 @@ userRouter.post("/register", async (req, res) => {
     } else {
       const hash = await bcrypt.hash(password, 10);
       const newUser = await User.create({ login, email, password: hash });
+      await main(email);
+      console.log("Email sent successfully to:", email);
       req.session.login = newUser.login;
       req.session.save(() => {
         res.status(200).json({ regDone: "Новый профиль успешно создан" });
@@ -32,6 +58,7 @@ userRouter.post("/register", async (req, res) => {
     }
   } catch (error) {
     console.log(error);
+    res.send('Ошибочка!')
   }
 });
 
@@ -58,7 +85,7 @@ userRouter.post("/login", async (req, res) => {
     } else {
       const checkPass = await bcrypt.compare(password, user.password);
       if (checkPass) {
-        req.session.login = user.email;
+        req.session.login = user.login;
         req.session.save(() => {
           res
             .status(200)

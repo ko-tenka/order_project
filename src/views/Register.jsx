@@ -11,11 +11,14 @@ const React = require('react');
 
          <form id="regForm"> 
 
-           <label htmlFor="emailInput" className="form-label">Введите логин:</label>
+           <label htmlFor="loginInput" className="form-label">Введите логин:</label>
            <input name="login" type="text" className="form-control" id="loginInput" placeholder="Введите логин" />
 
+           {/* <label htmlFor="phoneInput" className="form-label">Введите ваш номер телефона:</label>
+           <input name="phone" type="tel" id="phone" placeholder="Введите номер телефона"></input> */}
+
            <label htmlFor="emailInput" className="form-label">Введите ваш адрес электронной почты:</label>
-           <input name="email" type="text" className="form-control" id="emailInput" placeholder="Введите действующий e-mail" />
+           <input name="email" type="email" className="form-control" id="emailInput" placeholder="Введите e-mail" />
 
            <label htmlFor="passwordInput" className="form-label">Введите пароль:</label>
            <input name="password" type="password" className="form-control" id="passwordInput" placeholder="Введите пароль" />
