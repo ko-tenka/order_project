@@ -1,5 +1,5 @@
 const express = require('express');
-
+const session = require('express-session');
 const router = express.Router();
 const { User, Book } = require('../../db/models');
 // const renderTemplate = require('../utils/renderTemplate');
@@ -17,8 +17,9 @@ module.exports = router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const {
-      title, description, author, img, user_id,
+      title, description, author, img,
     } = req.body;
+    const user_id = req.session.userId.id;
     const newTask = await Book.create({
       title, description, author, img, user_id,
     });
