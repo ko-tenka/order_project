@@ -17,8 +17,8 @@ function Navbar({ login }) {
             </a>
           </button>
           <button type="submit" className="navBtn">
-            <a href="/user/account" className="link">
-              Личный кабинет
+            <a href="/user/favorites" className="link">
+              Избранное
             </a>
           </button>
           <button type="submit" className="navBtn">
