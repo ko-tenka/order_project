@@ -49,8 +49,8 @@ userRouter.post('/register', async (req, res) => {
       const hash = await bcrypt.hash(password, 10);
       const newUser = await User.create({ login, email, password: hash });
 
-      // await main(email);
-      // console.log("Email sent successfully to:", email);
+      await main(email);
+      console.log("Email sent successfully to:", email);
 
       const userId = await User.findOne({
         attributes: ['id'],

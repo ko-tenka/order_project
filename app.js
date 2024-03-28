@@ -41,7 +41,7 @@ app.use(express.json());
 app.use(express.static(path.join(process.cwd(), 'public')));
 // dbConnectionCheck();
 
-app.use('/user', checkUser, userRouter);
+app.use('/user', userRouter);
 app.use('/api', apiRouter);
 app.use('/', indexRouter);
 app.use('/favorites', checkUser, favoriteRouter);
