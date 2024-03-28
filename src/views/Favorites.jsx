@@ -2,7 +2,6 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function Favorites({ login, favorites }) {
-  console.log('наш второй фав', favorites);
   return (
     <Layout login={login}>
 
@@ -12,7 +11,7 @@ module.exports = function Favorites({ login, favorites }) {
             <span id="userName">
               {login}
             </span>
-            , добро пожаловать !
+            , Ваш список Избранных книг:
           </h1>
         ) : (
           <h1>Гость, добро пожаловать !</h1>
@@ -42,8 +41,6 @@ module.exports = function Favorites({ login, favorites }) {
                 </div>
               </div>
             </div>
-            <li key={el.Book.id}><a href={`/probook/${el.Book.id}`}>Подробнее</a></li>
-            <a href={`/favorites/add/${el.Book.id}`} className="fav-btn"><img src="/css/imageBlack.png" className="fav-imgBlack" /></a>
           </div>
         ))}
       </div>

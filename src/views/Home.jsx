@@ -41,10 +41,9 @@ module.exports = function Home({ login, books, ratings}) {
                 </div>
               </div>
             </div>
-            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/imageBlack.png" className="fav-imgBlack" /></a>
-              <div>
-                <h3 className='allRateHome' id={el.id}>{ratings[el.id]}</h3>
-              </div>
+            <div>
+              <h3 className='allRateHome' id={el.id}>{ratings[el.id]}</h3>
+            </div>
             <h3>⭐</h3>
           </div>
         ))}
