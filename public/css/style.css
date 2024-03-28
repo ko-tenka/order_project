@@ -77,7 +77,7 @@ body {
 #loginForm input {
     padding-left: 10px;
 }
-.regBtn, .logBtn, .addBookBtn{
+.regBtn, .logBtn, .addBookBtn, .chatBtn{
     align-items: center;
     background-color: black;
     color: white;
@@ -330,10 +330,30 @@ body {
     display: block;
 }
 
-.chatContainer {
-    width: 35%;
-    height: 400px;
+
+.chat-1 {
     border-radius: 14px;
-    border: 2px solid black;
+    border: 2px solid black; 
     margin: 6%;
+}
+.chat-2 {
+    border-radius: 14px;
+    border: 2px solid black; 
+    margin: 6%;
+}
+
+.chatCard {
+    border-radius: 14px;
+    padding: 10px;
+}
+
+.chatForm {
+    margin: 30px;
+}
+.chatForm  input{
+    width: 700px;
+}
+
+.chat {
+    margin: 30px;
 }
