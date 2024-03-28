@@ -15,27 +15,27 @@ userRouter.get('/register', (req, res) => {
   renderTemplate(Register, { login }, res);
 });
 
-// const transporter = nodemailer.createTransport({
-//   host: 'smtp.mail.ru',
-//   port: 465,
-//   secure: true, // Use true for port 465, false for all other ports
-//   auth: {
-//     user: 'emailtest00@mail.ru',
-//     pass: 'reswEbGKHAeaript8jxe',
-//   },
-// });
-// async function main(email) {
-//   // send mail with defined transport object
-//   const info = await transporter.sendMail({
-//     from: 'emailtest00@mail.ru', // sender address
-//     to: email, // list of receivers
-//     subject: 'Hello ✔', // Subject line
-//     text: 'Вы зарегестрировались на червечке!', // plain text body
-//     html: '<b>Вы зарегестрировались на червечке!</b>',
-//   });
+const transporter = nodemailer.createTransport({
+  host: 'smtp.mail.ru',
+  port: 465,
+  secure: true, // Use true for port 465, false for all other ports
+  auth: {
+    user: 'emailtest00@mail.ru',
+    pass: 'reswEbGKHAeaript8jxe',
+  },
+});
+async function main(email) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: 'emailtest00@mail.ru', // sender address
+    to: email, // list of receivers
+    subject: 'Hello ✔', // Subject line
+    text: 'Вы зарегестрировались на червечке!', // plain text body
+    html: '<b>Вы зарегестрировались на червечке!</b>',
+  });
 
-//   console.log('Message sent: %s', info.messageId);
-// }
+  console.log('Message sent: %s', info.messageId);
+}
 
 userRouter.post('/register', async (req, res) => {
   try {
