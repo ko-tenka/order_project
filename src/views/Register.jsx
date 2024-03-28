@@ -27,6 +27,8 @@ const React = require('react');
 
          </form>
 
+         <img className='worr' src="/img/worr.gif" alt="Тут гифка" />
+
          <h3 className="regMsg"> </h3>
          <a href="/home" className="homeLink">ВЕРНУТЬСЯ</a>
 

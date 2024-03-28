@@ -64,13 +64,17 @@ function ProBook({ login, book, comments }) {
             </div>
           </div>
         </div>
-        <div className="reklama"><h1>РЕКЛАМА</h1></div>
+        <div className="reklama">
+          <p>РЕКЛАМА</p>
+          <img className='English' src="/img/English.png" alt="" />
+          <img className='News' src="/img/logo.png" alt="Тут лого" />
+        </div>
       </div>
       <br />
       <hr />
       <br />
       <div className="cha-1">
-        <h1>CHAT</h1>
+        <h1 className='ChaatSlovo'>Чат</h1>
         <div className="chat-2">
           <form className="chatForm" id={book.id}>
             <div><input name="chat" type="text" className="form-control" id="chatInput" placeholder="Начните чат" /></div>

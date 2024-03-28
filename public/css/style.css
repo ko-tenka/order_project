@@ -5,8 +5,24 @@
 }
 
 body {
-  background-color:#F1CAAE;
+  /* background-color:#F1CAAE; */
+  background: linear-gradient(-45deg, #EAE5E5, #EECEC9);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
 }
+
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 
 .navbar {
     display: flex;
@@ -305,7 +321,7 @@ body {
 .title-pro-book {
     width: 65%;
     height: 500px;
-    background-color: #8C5B5B;
+    background-color: #8c5b5b96;
 }
 
 .rating {
@@ -376,7 +392,7 @@ body {
     width: 35%;
     height: 400px;
     border-radius: 14px;
-    border: 2px solid black; 
+    border: none;
     margin: 6%;
 }
 
@@ -384,11 +400,13 @@ body {
     border-radius: 14px;
     border: 2px solid black; 
     margin: 6%;
+    background-color: #8c5b5b53;
 }
 
 .chatCard {
     border-radius: 14px;
     padding: 10px;
+    background-color: white;
 }
 
 .chatForm {
@@ -400,14 +418,45 @@ body {
 
 .chat {
     margin: 30px;
-
+}
 
 .rateHome{
     display: flex;
-    margin-top: -32px;
-    margin-left: 60px;
+    margin-top: -38px;
+    margin-left: 55px;
+    background-color: rgb(156, 126, 245);
+    color: white;
+    width: 45px;
+    padding-left: 2px;
+    border-radius: 6px;
 }
 .starHome1{
     margin-left: 2px;
 
 }
+.ChaatSlovo{
+    margin-top: 20px;
+    margin-left: 150px;
+}
+.worr{
+    width: 200px;
+}
+.News,
+.English{
+    width: 200px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.reklama p{
+    text-align: center;
+}
+.reklama{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.News{
+    background-color: rgb(118, 118, 255);
+}
+.rateHome
