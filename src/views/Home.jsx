@@ -24,9 +24,7 @@ module.exports = function Home({ login, books, ratings}) {
 
               <div className="cardBook">
                 <div className="book">
-                  <div className="imgCard">
-                    <img src={el.img} alt="img_card" />
-                  </div>
+                    <img src={el.img} className="imgCard" alt="img_card" />
                   <div className="titleCard">
                     <div><h3>{el.title}</h3></div>
                     <div><h3>{el.description}</h3></div>

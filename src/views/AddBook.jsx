@@ -44,7 +44,7 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function AddBook({login}) {
+module.exports = function AddBook({login}) {
   return (
     <Layout login = {login}>
       <div className="mainContainer">
@@ -71,5 +71,3 @@ function AddBook({login}) {
     </Layout>
   );
 }
-
-module.exports = AddBook;

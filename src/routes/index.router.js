@@ -3,10 +3,10 @@ const renderTemplate = require('../utils/renderTemplate');
 const Home = require('../views/Home');
 const Page404 = require('../views/Page404');
 const AddBook = require('../views/AddBook');
-const { Book } = require('../../db/models');
-const ProBook = require('../views/ProBook')
+const { Book, Izbrannoe } = require('../../db/models');
+const ProBook = require('../views/ProBook');
+const Favorites = require('../views/Favorites');
 const { Rate} = require('../../db/models');
-
 
 indexRouter.get(`/probook/:id`, async (req, res) => {
   try {
@@ -18,8 +18,6 @@ indexRouter.get(`/probook/:id`, async (req, res) => {
     console.log('ERROR', error);
   }
 });
-
-
 
 indexRouter.get('/', async (req, res) => {
   try {
@@ -75,6 +73,17 @@ indexRouter.get('/404', (req, res) => {
 indexRouter.get('/addbook', (req, res) => {
   const { login } = req.session;
   renderTemplate(AddBook, { login }, res);
+});
+
+indexRouter.get('/fav', async (req, res) => {
+  const { login } = req.session;
+  const user_id = req.session.userId.id;
+  const book = await Izbrannoe.findAll({
+    attributes: ['book_id'],
+    where: { user_id },
+  });
+  console.log('уже ТТУУУт', book);
+  renderTemplate(Favorites, { login, book }, res);
 });
 
 module.exports = indexRouter;
