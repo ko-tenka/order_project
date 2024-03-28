@@ -12,6 +12,7 @@ indexRouter.get(`/probook/:id`, async (req, res) => {
   try {
     const { login } = req.session;
     const book = await Book.findOne({ where: { id: req.params.id } })
+    console.log("не наход? ------------",book)
     renderTemplate(ProBook, { login, book }, res);
   } catch (error) {
     console.log('ERROR', error);
@@ -20,63 +21,6 @@ indexRouter.get(`/probook/:id`, async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-// indexRouter.get('/', async (req, res) => {
-//   try {
-//     const { login } = req.session;
-    
-//     const allRate = await Rate.findAll({ raw: true });
-//     const book = await Book.findAll({ raw: true });
-//     renderTemplate(Home, { login, book, allRate }, res);
-//   } catch (error) {
-//     console.log('ERROR', error);
-//   }
-// });
-
-// indexRouter.post('/', async (req, res) => {
-//   try {
-//     const { login } = req.session;
-//     const { book_id } = req.body;
-
-//     const starsRate = await Rate.findAll({
-//       attributes: ['stars'],
-//       where: { book_id }
-//     });
-//     const resultOneStar = starsRate.reduce((res, el) => res + el, 0)
-//     const book = await Book.findAll({ raw: true });
-//     renderTemplate(Home, { login, book, resultOneStar }, res);
-//   } catch (error) {
-//     console.log('ERROR', error);
-//   }
-// });
-
-// indexRouter.get('/', async (req, res) => {
-//   try {
-//     const { login } = req.session;
-    
-//     const allRate = await Rate.findAll({ raw: true });
-//     const book = await Book.findAll({ raw: true });
-//     console.log(book)
-//     let resultOneStar = 0;
-//     if(book.id === allRate.user_id){
-//       resultOneStar+=allRate.stars
-//     // const resultOneStar = book.reduce((res, el) => res + el.stars, 0)
-//     console.log(resultOneStar)
-//     }else{
-//       console.log('Ошибка', error)
-//     }
-//     renderTemplate(Home, { login, book, resultOneStar }, res);
-//   } catch (error) {
-//     console.log('ERROR', error);
-//   }
-// });
 indexRouter.get('/', async (req, res) => {
   try {
     const { login } = req.session;
