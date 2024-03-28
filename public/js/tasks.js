@@ -56,10 +56,10 @@ tasksContainer.addEventListener('click', async (event) => {
             <button class='editBtn' type='button' data-id=${taskId}>Edit Task</button>
             <button class='cardBtn' type='button' data-id=${taskId}>Delete Task</button>
             <div class="editForm" style="display:none;">
+            <input type="img" name="img" placeholder="Title" value=${img} required />
              <input type="text" name="title" placeholder="Title" value=${title} required />
              <input type="text" name="description" placeholder="Description" value=${description} required />
-             <input type="text" name="description" placeholder="Description" value=${author} required />
-             <input type="text" name="title" placeholder="Title" value=${img} required />
+             <input type="text" name="author" placeholder="Description" value=${author} required />
              <button class='submitEdit' data-id=${taskId}>Submit Changes</button>
           </div>
         </div>
@@ -113,10 +113,10 @@ form.addEventListener('submit', async (event) => {
           <button class='editBtn' type='button' data-id=${newTask.id}>Edit Task</button>
           <button class='cardBtn' type='button' data-id=${newTask.id}>Delete Task</button>
           <div class="editForm" style="display:none;">
+          <input type="img" name="title" placeholder="Title" value=${newTask.img} required />
            <input type="text" name="title" placeholder="Title" value=${newTask.title} required />
            <input type="text" name="description" placeholder="Description" value=${newTask.description} required />
-           <input type="text" name="description" placeholder="Description" value=${newTask.author} required />
-           <input type="text" name="title" placeholder="Title" value=${newTask.img} required />
+           <input type="text" name="author" placeholder="Description" value=${newTask.author} required />
            <button class='submitEdit' data-id=${newTask.id}>Submit Changes</button>
         </div>
       </div>

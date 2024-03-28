@@ -310,15 +310,19 @@ body {
 
 .imgCardProBook img{
     width: 280px;
-    height: 450px;
+    height: 370px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .title-pro-book {
     display: flex;
+    
 }
 
 .title-proBook {
     margin: 4%;
+    margin-left: 200px;
 }
 .title-proBook h1{
     margin-bottom: 20px;
@@ -330,6 +334,39 @@ body {
     display: block;
 }
 
+
+}
+
+
+.imgCardProBookStars{
+    margin-top: 400px;
+    margin-left: -270px;
+}
+.imgCardProBookStars img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+} 
+
+.starNone{
+    position: absolute;
+    margin-right: 5px ;
+    margin-left: -50px;
+}
+
+ .starNone{
+    opacity: 0;
+} 
+.starNone:hover{
+    opacity: 1;
+}
+
+.starMsg{
+    margin-top: 65px;
+    margin-left: -250px;
+    min-width: 200px;
+}
+
 .chatContainer {
     width: 35%;
     height: 400px;
@@ -337,3 +374,4 @@ body {
     border: 2px solid black;
     margin: 6%;
 }
+
