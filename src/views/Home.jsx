@@ -21,8 +21,6 @@ module.exports = function Home({ login, books, ratings}) {
         {books.map((el) => (
           <div className="bookContainer">
             <div className={`component${el.id}`}>
-
-
               <div className="cardBook">
                 <div className="book">
                     <img src={el.img} className="imgCard" alt="img_card" />
@@ -34,7 +32,7 @@ module.exports = function Home({ login, books, ratings}) {
                         <h3>{el.title}</h3>
                       </div>
                       <div className="flag-up" />
-                      <a href={`/favorites/add/${el.id}`} className="fav-btn"><img src="/css/image.png" className="fav-img" /></a>
+                      <a href={`/favorites/add/${el.id}`} className="fav-btn"><img src="/css/image.png" data-id={el.id} className="fav-img" /></a>
                     </div>
                     <div className="down">
                       <span key={el.id}><a href={`/probook/${el.id}`}>Подробнее</a></span>
@@ -43,21 +41,11 @@ module.exports = function Home({ login, books, ratings}) {
                 </div>
               </div>
             </div>
-
-
-              <li key={el.id}><a href={`/probook/`+el.id}>Подробнее</a></li>
-
-            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" data-id={el.id} className="fav-img" /></a>
             <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/imageBlack.png" className="fav-imgBlack" /></a>
-
-            
               <div>
                 <h3 className='allRateHome' id={el.id}>{ratings[el.id]}</h3>
               </div>
-            
-            
             <h3>⭐</h3>
-
           </div>
         ))}
       </div>
