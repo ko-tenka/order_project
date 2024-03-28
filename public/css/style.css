@@ -329,3 +329,11 @@ body {
 .fav-imgBlack:hover{
     display: block;
 }
+
+.chatContainer {
+    width: 35%;
+    height: 400px;
+    border-radius: 14px;
+    border: 2px solid black;
+    margin: 6%;
+}

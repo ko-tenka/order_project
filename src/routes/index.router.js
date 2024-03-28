@@ -6,14 +6,16 @@ const AddBook = require('../views/AddBook');
 const { Book, Izbrannoe } = require('../../db/models');
 const ProBook = require('../views/ProBook');
 const Favorites = require('../views/Favorites');
-const { Rate } = require('../../db/models');
+const { Rate, Comment } = require('../../db/models');
+
 
 indexRouter.get('/probook/:id', async (req, res) => {
   try {
     const { login } = req.session;
     const book = await Book.findOne({ where: { id: req.params.id } });
-    console.log('не наход? ------------', book);
-    renderTemplate(ProBook, { login, book }, res);
+    const comments = await Comment.findAll({ where: { book_id: req.params.id } });
+    // console.log('не наход? ------------', book);
+    renderTemplate(ProBook, { login, book, comments }, res);
   } catch (error) {
     console.log('ERROR', error);
   }
