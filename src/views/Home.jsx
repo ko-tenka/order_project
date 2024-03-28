@@ -23,7 +23,7 @@ module.exports = function Home({ login, books, ratings}) {
             <div className={`component${el.id}`}>
               <div className="cardBook">
                 <div className="book">
-                    <img src={el.img} className="imgCard" alt="img_card" />
+                    <img src={el.img} className="imgCard" alt="Тут ваша картинка 🖼" />
                   <div className="titleCard">
                     <div className="up">
                       <div>
@@ -41,10 +41,10 @@ module.exports = function Home({ login, books, ratings}) {
                 </div>
               </div>
             </div>
-            <div>
+            <div className='rateHome'>
               <h3 className='allRateHome' id={el.id}>{ratings[el.id]}</h3>
+              <h3 className='starHome1'>⭐</h3>
             </div>
-            <h3>⭐</h3>
           </div>
         ))}
       </div>
