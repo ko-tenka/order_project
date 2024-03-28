@@ -69,29 +69,28 @@ function ProBook({ login, book, comments }) {
       <br />
       <hr />
       <br />
-      <div className="cha-1t">
+      <div className="cha-1">
         <h1>CHAT</h1>
         <div className="chat-2">
           <form className="chatForm" id={book.id}>
-            <div><input name="chat" type="text" className="form-control" id="chatInput" placeholder="Введите chat" /></div>
+            <div><input name="chat" type="text" className="form-control" id="chatInput" placeholder="Начните чат" /></div>
             <button type="submit" className="chatBtn">Отправить</button>
           </form>
-        </div>
-        <div className="chatContainer">
-          <h1>chat</h1>
-          <div className="allChat">
-            {comments.map((el) => (
-              <div style={{ width: '300px', border: '2px solid black', margin: '3px' }}>
-                <h3>
-                  Кто опубликовал:
-                  {login}
-                </h3>
-                <br />
-                <div style={{ width: '100px', margin: '3px' }}>
-                  <h3>{el.comment}</h3>
+          <div className="chatContainer">
+            <div className="allChat">
+              {comments.map((el) => (
+                <div className='chatCard' style={{ width: '700px', border: '1px solid black', margin: '3px' }}>
+                  <h3>
+                    Кто опубликовал:
+                    {login}
+                  </h3>
+                  <br />
+                  <div className='commit' style={{ width: '300px', margin: '3px' }}>
+                    <h3>{el.comment}</h3>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
