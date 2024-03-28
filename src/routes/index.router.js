@@ -8,12 +8,13 @@ const ProBook = require('../views/ProBook');
 const Favorites = require('../views/Favorites');
 const { Rate, Comment } = require('../../db/models');
 
-
 indexRouter.get('/probook/:id', async (req, res) => {
   try {
     const { login } = req.session;
     const book = await Book.findOne({ where: { id: req.params.id } });
-    const comments = await Comment.findAll({ where: { book_id: req.params.id } });
+    const comments = await Comment.findAll({
+      where: { book_id: req.params.id },
+    });
     // console.log('не наход? ------------', book);
     renderTemplate(ProBook, { login, book, comments }, res);
   } catch (error) {
@@ -34,7 +35,10 @@ indexRouter.get('/', async (req, res) => {
     books.forEach((book) => {
       const bookId = book.id;
       const bookRatings = allRates.filter((rate) => rate.book_id === bookId);
-      const totalStars = bookRatings.reduce((total, rate) => total + rate.stars, 0);
+      const totalStars = bookRatings.reduce(
+        (total, rate) => total + rate.stars,
+        0,
+      );
       if (totalStars === 0) {
         ratings[bookId] = 0;
       } else {
@@ -79,17 +83,20 @@ indexRouter.get('/fav', async (req, res) => {
 
     const favorites = await Izbrannoe.findAll({
       where: { user_id: userId },
-      include: [{
-        model: Book,
-        attributes: ['id', 'title', 'description', 'author', 'img'],
-      }],
+      include: [
+        {
+          model: Book,
+          attributes: ['id', 'title', 'description', 'author', 'img'],
+        },
+      ],
+      // raw: true,
     });
-    console.log('наш фав', favorites);
+    // console.log('наш фав', favorites[0].Book);
 
     renderTemplate(Favorites, { login, favorites }, res);
   } catch (error) {
     console.error('Ошибка при получении избранных книг:', error);
-    res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    res.redirect('/');
   }
 });
 
