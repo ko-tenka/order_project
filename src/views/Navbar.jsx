@@ -3,6 +3,7 @@ const React = require('react');
 function Navbar({ login }) {
   return (
     <div className="navbar">
+      <img className='wormLogo' src="/img/WORM.PNG" alt="" />
       <a href="/" className="logo">
         Книжный червь
       </a>
@@ -25,7 +26,7 @@ function Navbar({ login }) {
           </button>
         </nav>
       ) : (
-        <nav>
+        <nav className='nav'>
           <button type="submit" className="navBtn">
             <a href="/user/register/" className="link">
               Регистрация
