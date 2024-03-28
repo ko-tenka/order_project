@@ -245,6 +245,10 @@ body {
     height: auto;
   }
 
+  .fav-img:hover {
+    color: red;
+  }
+
 .img-for-book {
     max-height: 100px;
     width: auto; 
@@ -328,6 +332,8 @@ body {
 }
 .fav-imgBlack:hover{
     display: block;
+}
+
 
 }
 
@@ -360,3 +366,12 @@ body {
     margin-left: -250px;
     min-width: 200px;
 }
+
+.chatContainer {
+    width: 35%;
+    height: 400px;
+    border-radius: 14px;
+    border: 2px solid black;
+    margin: 6%;
+}
+
