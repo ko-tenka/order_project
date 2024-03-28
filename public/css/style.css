@@ -245,6 +245,10 @@ body {
     height: auto;
   }
 
+  .fav-img:hover {
+    color: red;
+  }
+
 .img-for-book {
     max-height: 100px;
     width: auto; 
@@ -324,7 +328,6 @@ body {
 }
 .fav-imgBlack:hover{
     display: block;
-
 }
 
 .chatContainer {

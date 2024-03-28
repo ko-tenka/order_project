@@ -8,6 +8,7 @@ const ProBook = require('../views/ProBook');
 const Favorites = require('../views/Favorites');
 const { Rate, Comment } = require('../../db/models');
 
+
 indexRouter.get('/probook/:id', async (req, res) => {
   try {
     const { login } = req.session;
@@ -59,15 +60,37 @@ indexRouter.get('/addbook', (req, res) => {
   renderTemplate(AddBook, { login }, res);
 });
 
+// indexRouter.get('/fav', async (req, res) => {
+//   const { login } = req.session;
+//   const user_id = req.session.userId.id;
+//   const book = await Izbrannoe.findAll({
+//     attributes: ['book_id'],
+//     where: { user_id },
+//   });
+//   console.log('уже ТТУУУт', book);
+//   renderTemplate(Favorites, { login, book }, res);
+// });
+
 indexRouter.get('/fav', async (req, res) => {
-  const { login } = req.session;
-  const user_id = req.session.userId.id;
-  const book = await Izbrannoe.findAll({
-    attributes: ['book_id'],
-    where: { user_id },
-  });
-  console.log('уже ТТУУУт', book);
-  renderTemplate(Favorites, { login, book }, res);
+  try {
+    const { login } = req.session;
+    const userId = req.session.userId.id;
+    console.log(userId);
+
+    const favorites = await Izbrannoe.findAll({
+      where: { user_id: userId },
+      include: [{
+        model: Book,
+        attributes: ['id', 'title', 'description', 'author', 'img'],
+      }],
+    });
+    console.log('наш фав', favorites);
+
+    renderTemplate(Favorites, { login, favorites }, res);
+  } catch (error) {
+    console.error('Ошибка при получении избранных книг:', error);
+    res.status(500).json({ success: false, message: 'Ошибка сервера' });
+  }
 });
 
 module.exports = indexRouter;
