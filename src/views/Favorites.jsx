@@ -1,18 +1,3 @@
-// const React = require('react');
-// const Layout = require('./Layout');
-
-// module.exports = function Favorites({ login }) {
-//   return (
-//     <Layout login={login}>
-//       <div className="fav-container">
-//         <h1>Привет</h1>
-//         <div className='tasksContainer'></div>
-//       </div>
-//       <script src="/js/fav.js" />
-//     </Layout>
-//   );
-// };
-
 const React = require('react');
 const Layout = require('./Layout');
 
@@ -20,6 +5,7 @@ module.exports = function Favorites({ login, book }) {
   console.log(book);
   return (
     <Layout login={login}>
+
       <div className='upCont'>
         {login ? (
           <h1>
