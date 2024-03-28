@@ -1,8 +1,8 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Home({ login, book }) {
-  console.log(book);
+module.exports = function Home({ login, books, ratings}) {
+  console.log(books);
   return (
     <Layout login={login}>
       <div className='upCont'>
@@ -18,7 +18,7 @@ module.exports = function Home({ login, book }) {
         )}
       </div>
       <div className="container">
-        {book.map((el) => (
+        {books.map((el) => (
           <div className="bookContainer">
             <div className={`component${el.id}`}>
 
@@ -41,6 +41,14 @@ module.exports = function Home({ login, book }) {
 
             <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" data-id={el.id} className="fav-img" /></a>
             <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/imageBlack.png" className="fav-imgBlack" /></a>
+
+            
+              <div>
+                <h3 className='allRateHome' id={el.id}>{ratings[el.id]}</h3>
+              </div>
+            
+            
+            <h3>⭐</h3>
 
           </div>
         ))}
