@@ -1,13 +1,18 @@
-require("dotenv").config();
-const express = require("express");
-const morgan = require("morgan");
-const path = require("path");
+require('dotenv').config();
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
 
-const session = require("express-session");
-const FileStore = require("session-file-store")(session);
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 
-const userRouter = require("./src/routes/user.router");
-const indexRouter = require("./src/routes/index.router");
+const bodyParser = require('body-parser');
+const userRouter = require('./src/routes/user.router');
+const indexRouter = require('./src/routes/index.router');
+const apiRouter = require('./src/routes/apiRouter');
+const favoriteRouter = require('./src/routes/favorite.router');
+const addBook = require('./src/routes/addBook.router');
+const { checkUser } = require('./src/middlewares/common')
 
 // const dbConnectionCheck = require("./db/dbConnectCheck");
 // const { checkUser  } = require("./src/middlewares/common");
@@ -17,9 +22,9 @@ const app = express();
 const { PORT, SESSION_SECRET } = process.env;
 
 const sessionConfig = {
-  name: "cookieName",
+  name: 'cookieName',
   store: new FileStore(),
-  secret: process.env.SESSION_SECRET ?? "Subs",
+  secret: process.env.SESSION_SECRET ?? 'Subs',
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -30,19 +35,43 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(process.cwd(), "public")));
+app.use(express.static(path.join(process.cwd(), 'public')));
 // dbConnectionCheck();
 
-app.use("/user", userRouter);
-app.use("/", indexRouter);
+app.use('/user', userRouter);
+app.use('/api', apiRouter);
+app.use('/', indexRouter);
+app.use('/favorites', checkUser, favoriteRouter);
+app.use('/addbook', checkUser, addBook);
 
-app.get("/*", (req, res) => {
-  res.redirect("/");
+app.get('/*', (req, res) => {
+  res.redirect('/');
 });
 
 app.listen(PORT, function () {
   console.log(`Server listening at localhost:${this.address().port}`);
+});
+
+app.use(bodyParser.urlencoded({ extended: false }));
+const mailer = require('./public/js/nodemailer');
+const AddBook = require('./src/views/AddBook');
+
+app.post('/user/register', (req, res) => {
+  const message = {
+    to: req.body.email,
+    subject: 'Congratulations! You are successfully registred on our site',
+    text: `Поздравляем, Вы успешно зарегистрировались на нашем сайте!
+  
+  данные вашей учетной записи:
+  login: ${req.body.email}
+  password: ${req.body.pass}
+  
+  Данное письмо не требует ответа.`,
+  };
+  mailer(message);
+  user = req.body;
+  res.redirect('/registration');
 });
