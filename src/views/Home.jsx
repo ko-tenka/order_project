@@ -5,7 +5,7 @@ module.exports = function Home({ login, book }) {
   console.log(book);
   return (
     <Layout login={login}>
-      <div className='upCont'>
+      <div className="upCont">
         {login ? (
           <h1>
             <span id="userName">
@@ -26,7 +26,6 @@ module.exports = function Home({ login, book }) {
               {el.description}
               {el.author}
               {el.user_id}
-              
               Избранное
 
             </h3> */}
@@ -37,19 +36,22 @@ module.exports = function Home({ login, book }) {
                     <img src={el.img} alt="img_card" />
                   </div>
                   <div className="titleCard">
-                    <div><h3>{el.title}</h3></div>
-                    <div><h3>{el.description}</h3></div>
-                    <div><h3>{el.author}</h3></div>
+                    <div className="up">
+                      <div>
+                        <h3>{el.author}</h3>
+                        <br />
+                        <h3>{el.title}</h3>
+                      </div>
+                      <div className="flag-up" />
+                      <a href={`/favorites/add/${el.id}`} className="fav-btn"><img src="/css/image.png" className="fav-img" /></a>
+                    </div>
+                    <div className="down">
+                      <span key={el.id}><a href={`/probook/${el.id}`}>Подробнее</a></span>
+                    </div>
                   </div>
                 </div>
               </div>
-
             </div>
-
-              <li key={el.id}><a href={`/probook/`+el.id}>Подробнее</a></li>
-
-            <a href={ '/favorites/add/' + el.id } className="fav-btn"><img src="/css/image.png" className="fav-img" /></a>
-
           </div>
         ))}
       </div>

@@ -236,9 +236,9 @@ body {
 .taskBook {
     display: flex;
     flex-direction: column;
-
+}
 .fav-img {
-    max-height: 10px;
+    max-height: 20px;
     width: auto; 
     height: auto;
   }
@@ -247,12 +247,71 @@ body {
     max-height: 100px;
     width: auto; 
     height: auto;
+}
 
-
-.colorStaer{
+.colorStar {
     background-color: black;
 }
+
 .star1:hover{
     cursor: pointer;
+}
 
+.titleCard {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 140px;
+}
+
+.up {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.down {
+   display: flex;
+   align-items: end;
+   justify-content: end;
+   text-decoration: none;
+}
+
+.down a {
+    text-decoration: none;
+    color: black;
+    padding-right: 20px;
+}
+
+.proBookContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 6%;
+}
+
+.title-pro-book {
+    width: 65%;
+    height: 500px;
+    background-color: #8C5B5B;
+}
+
+.rating {
+    display: flex;
+}
+
+.imgCardProBook img{
+    width: 280px;
+    height: 450px;
+}
+
+.title-pro-book {
+    display: flex;
+}
+
+.title-proBook {
+    margin: 4%;
+}
+.title-proBook h1{
+    margin-bottom: 20px;
 }

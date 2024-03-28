@@ -33,11 +33,10 @@ form.addEventListener('submit', async (event) => {
         </div>
       </div>
       <div class="editForm" style="display:none;">
-</div>
+     </div>
     </div>
 	   `;
-
-    tasksContainer.appendChild(taskElement);
+      tasksContainer.appendChild(taskElement);
     }
 
     form.querySelectorAll('input').forEach((input) => {
@@ -48,4 +47,3 @@ form.addEventListener('submit', async (event) => {
     console.error('Error:', error);
   }
 });
-

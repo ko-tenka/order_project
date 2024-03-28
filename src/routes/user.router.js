@@ -15,27 +15,27 @@ userRouter.get('/register', (req, res) => {
   renderTemplate(Register, { login }, res);
 });
 
-// const transporter = nodemailer.createTransport({
-//   host: 'smtp.mail.ru',
-//   port: 465,
-//   secure: true, // Use true for port 465, false for all other ports
-//   auth: {
-//     user: 'emailtest00@mail.ru',
-//     pass: 'reswEbGKHAeaript8jxe',
-//   },
-// });
-// async function main(email) {
-//   // send mail with defined transport object
-//   const info = await transporter.sendMail({
-//     from: 'emailtest00@mail.ru', // sender address
-//     to: email, // list of receivers
-//     subject: 'Hello ✔', // Subject line
-//     text: 'Вы зарегестрировались на червечке!', // plain text body
-//     html: '<b>Вы зарегестрировались на червечке!</b>',
-//   });
+const transporter = nodemailer.createTransport({
+  host: 'smtp.mail.ru',
+  port: 465,
+  secure: true, // Use true for port 465, false for all other ports
+  auth: {
+    user: 'emailtest00@mail.ru',
+    pass: 'reswEbGKHAeaript8jxe',
+  },
+});
+async function main(email) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: 'emailtest00@mail.ru', // sender address
+    to: email, // list of receivers
+    subject: 'Hello ✔', // Subject line
+    text: 'Вы зарегестрировались на червечке!', // plain text body
+    html: '<b>Вы зарегестрировались на червечке!</b>',
+  });
 
-//   console.log('Message sent: %s', info.messageId);
-// }
+  console.log('Message sent: %s', info.messageId);
+}
 
 
 
@@ -53,8 +53,8 @@ userRouter.post("/register", async (req, res) => {
       const hash = await bcrypt.hash(password, 10);
       const newUser = await User.create({ login, email, password: hash });
 
-      await main(email);
-      console.log("Email sent successfully to:", email);
+      // await main(email);
+      // console.log("Email sent successfully to:", email);
       const userId = await User.findOne({
         attributes: ['id'],
         where: { email: email }
@@ -109,7 +109,6 @@ userRouter.post('/login', async (req, res) => {
       if (checkPass) {
         const userId = await User.findOne({
           attributes: ['id'],
-          
           where: { email },
         });
         req.session.login = user.login;
