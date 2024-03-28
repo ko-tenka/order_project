@@ -7,12 +7,16 @@ const starMsg = document.querySelector('.starMsg');
 
 rating.addEventListener('click', async (e) => {
   try {
-    console.log('Это ешка', e.target.id);
+    // Для простой звездочки:
+    // console.log('Это ешка', e.target.id);
+    // console.log('Это ешка', e.target.parentNode.id);
     console.log('Это ешка', e.target.parentNode.id);
+    console.log('Это ешка', e.target.parentNode.parentNode.id);
     const response = await fetch('/api/probook', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ rate: e.target.id, book_id: e.target.parentNode.id }),
+      // body: JSON.stringify({ rate: e.target.id, book_id: e.target.parentNode.id }),
+      body: JSON.stringify({ rate: e.target.parentNode.id, book_id: e.target.parentNode.parentNode.id }),
     });
     const newRate = await response.json();
     
