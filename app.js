@@ -11,6 +11,8 @@ const userRouter = require('./src/routes/user.router');
 const indexRouter = require('./src/routes/index.router');
 const apiRouter = require('./src/routes/apiRouter');
 const favoriteRouter = require('./src/routes/favorite.router');
+const addBook = require('./src/routes/addBook.router');
+const { checkUser } = require('./src/middlewares/common')
 
 // const dbConnectionCheck = require("./db/dbConnectCheck");
 // const { checkUser  } = require("./src/middlewares/common");
@@ -39,10 +41,11 @@ app.use(express.json());
 app.use(express.static(path.join(process.cwd(), 'public')));
 // dbConnectionCheck();
 
-app.use('/user', userRouter);
+app.use('/user', checkUser, userRouter);
 app.use('/api', apiRouter);
 app.use('/', indexRouter);
-app.use('/favorites', favoriteRouter);
+app.use('/favorites', checkUser, favoriteRouter);
+app.use('/addbook', checkUser, addBook);
 
 app.get('/*', (req, res) => {
   res.redirect('/');
@@ -54,6 +57,7 @@ app.listen(PORT, function () {
 
 app.use(bodyParser.urlencoded({ extended: false }));
 const mailer = require('./public/js/nodemailer');
+const AddBook = require('./src/views/AddBook');
 
 app.post('/user/register', (req, res) => {
   const message = {
