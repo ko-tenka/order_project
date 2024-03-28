@@ -34,9 +34,7 @@ async function addToFavorites(userId, bookId) {
 router.post('/add/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    console.log('Book ID', typeof id);
     const userId = req.session.userId.id;
-    console.log('User ID', typeof userId);
     const added = await addToFavorites(userId, id);
     if (added) {
       res.status(201).json({ success: true, message: 'Книга успешно добавлена в избранное для пользователя.' });
