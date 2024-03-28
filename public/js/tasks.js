@@ -121,11 +121,10 @@ form.addEventListener('submit', async (event) => {
         </div>
       </div>
       <div class="editForm" style="display:none;">
-</div>
+     </div>
     </div>
 	   `;
-
-    tasksContainer.appendChild(taskElement);
+      tasksContainer.appendChild(taskElement);
     }
     form.querySelectorAll('textarea').forEach((textarea) => {
       textarea.value = '';
@@ -138,4 +137,3 @@ form.addEventListener('submit', async (event) => {
     console.error('Error:', error);
   }
 });
-

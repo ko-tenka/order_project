@@ -20,6 +20,12 @@ module.exports = function Favorites({ login, book }) {
   console.log(book);
   return (
     <Layout login={login}>
+
+   //   <div className="fav-container"> </div>
+  //    <div className="fav-left"> </div>
+  //    <div className="fav-right"> </div>
+ //     <script src="/js/favorite.js" />
+
       <div className='upCont'>
         {login ? (
           <h1>

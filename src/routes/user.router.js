@@ -34,8 +34,8 @@ async function main(email) {
     html: '<b>Вы зарегестрировались на червечке!</b>',
   });
 
-  console.log('Message sent: %s', info.messageId);
 }
+
 
 userRouter.post('/register', async (req, res) => {
   try {
@@ -50,7 +50,8 @@ userRouter.post('/register', async (req, res) => {
       const newUser = await User.create({ login, email, password: hash });
 
       // await main(email);
-      // console.log('Email sent successfully to:', email);
+      // console.log("Email sent successfully to:", email);
+
       const userId = await User.findOne({
         attributes: ['id'],
         where: { email },
@@ -93,7 +94,6 @@ userRouter.post('/login', async (req, res) => {
       if (checkPass) {
         const userId = await User.findOne({
           attributes: ['id'],
-
           where: { email },
         });
         req.session.login = user.login;

@@ -67,7 +67,7 @@ indexRouter.get('/', async (req, res) => {
 
 indexRouter.get('/404', (req, res) => {
   const { login } = req.session;
-  renderTemplate(Page404, {}, res);
+  renderTemplate(Page404, { login }, res);
 });
 
 indexRouter.get('/addbook', (req, res) => {
