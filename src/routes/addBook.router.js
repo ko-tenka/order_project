@@ -2,8 +2,6 @@ const express = require('express');
 const session = require('express-session');
 const router = express.Router();
 const { User, Book } = require('../../db/models');
-// const renderTemplate = require('../utils/renderTemplate');
-// const AddBook = require('../views/AddBook');
 
 module.exports = router.get('/', async (req, res) => {
   try {
@@ -45,8 +43,8 @@ router.get('/:id', async (req, res) => {
 });
 
 router.patch('/:id', async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const {
       title, description, author, img,
     } = req.body;

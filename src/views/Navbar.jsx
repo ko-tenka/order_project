@@ -20,7 +20,7 @@ function Navbar({ login }) {
             </a>
           </button>
           <button type="submit" className="navBtn">
-            <a href="/user/favorites" className="link">
+            <a href="/fav" className="link">
               Избранное
             </a>
           </button>

@@ -217,7 +217,7 @@ body {
     margin: 5px;
 }
 
-.imgCard img{
+.imgCard{
     width: 100px;
     height: 150px;
 }
@@ -237,8 +237,10 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .fav-img {
-    max-height: 20px;
+    max-height: 25px;
+
     width: auto; 
     height: auto;
   }
@@ -249,7 +251,9 @@ body {
     height: auto;
 }
 
-.colorStar {
+
+
+.colorStaer{
     background-color: black;
 }
 
@@ -314,4 +318,11 @@ body {
 }
 .title-proBook h1{
     margin-bottom: 20px;
+}
+.fav-imgBlack{
+    max-height: 25px;   
+}
+.fav-imgBlack:hover{
+    display: block;
+
 }
